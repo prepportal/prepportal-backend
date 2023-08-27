@@ -1,10 +1,9 @@
-from django.shortcuts import render
-
-# Create your views here.
-# views.py
 from rest_framework import viewsets
-from .models import Branch, SemesterGroup, Semester
-from .serializers import BranchSerializer, SemesterGroupSerializer, SemesterSerializer
+
+from .models import Branch, Semester, SemesterGroup, SubjectType
+from .serializers import (BranchSerializer, SemesterGroupSerializer,
+                          SemesterSerializer, SubjectTypeSerializer)
+
 
 class BranchViewSet(viewsets.ModelViewSet):
     queryset = Branch.objects.all()
@@ -17,3 +16,7 @@ class SemesterGroupViewSet(viewsets.ModelViewSet):
 class SemesterViewSet(viewsets.ModelViewSet):
     queryset = Semester.objects.all()
     serializer_class = SemesterSerializer
+
+class SubjectTypeViewSet(viewsets.ModelViewSet):
+    queryset = SubjectType.objects.all()
+    serializer_class = SubjectTypeSerializer
