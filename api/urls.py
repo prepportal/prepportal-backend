@@ -1,7 +1,7 @@
 import debug_toolbar
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import BranchViewSet, QuestionPaperViewSet, SemesterGroupViewSet, SemesterViewSet, SubjectTypeViewSet, SubjectViewSet
+from .views import BranchViewSet, NoteViewSet, QuestionPaperViewSet, SemesterGroupViewSet, SemesterViewSet, SubjectTypeViewSet, SubjectViewSet
 # app_name will help us do a reverse look-up latter.
 router = DefaultRouter()
 router.register(r'branches', BranchViewSet)
@@ -10,6 +10,7 @@ router.register(r'semesters', SemesterViewSet)
 router.register(r'subject-types', SubjectTypeViewSet)
 router.register(r'subjects', SubjectViewSet)
 router.register(r'question-papers', QuestionPaperViewSet)
+router.register(r'notes', NoteViewSet)
 
 urlpatterns = [
     path('v1/', include(router.urls)),
