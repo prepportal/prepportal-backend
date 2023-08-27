@@ -1,8 +1,11 @@
 from rest_framework import viewsets
 
-from .models import Branch, Note, QuestionPaper, Semester, SemesterGroup, Subject, SubjectType
-from .serializers import (BranchSerializer, NoteSerializer, QuestionPaperSerializer, SemesterGroupSerializer,
-                          SemesterSerializer, SubjectSerializer, SubjectTypeSerializer)
+from .models import (Branch, Note, QuestionPaper, Semester, SemesterGroup,
+                     Subject, SubjectType)
+from .serializers import (BranchSerializer, NoteSerializer,
+                          QuestionPaperSerializer, SemesterGroupSerializer,
+                          SemesterSerializer, SubjectSerializer,
+                          SubjectTypeSerializer)
 
 
 class BranchViewSet(viewsets.ModelViewSet):

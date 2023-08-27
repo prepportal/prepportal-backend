@@ -1,6 +1,9 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Branch, Note, QuestionPaper, SemesterGroup, Semester, Subject, SubjectType
+
+from .models import (Branch, Note, QuestionPaper, Semester, SemesterGroup,
+                     Subject, SubjectType)
+
 
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:
