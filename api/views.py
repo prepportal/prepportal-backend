@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from .models import Branch, Semester, SemesterGroup, SubjectType
-from .serializers import (BranchSerializer, SemesterGroupSerializer,
-                          SemesterSerializer, SubjectTypeSerializer)
+from .models import Branch, QuestionPaper, Semester, SemesterGroup, Subject, SubjectType
+from .serializers import (BranchSerializer, QuestionPaperSerializer, SemesterGroupSerializer,
+                          SemesterSerializer, SubjectSerializer, SubjectTypeSerializer)
 
 
 class BranchViewSet(viewsets.ModelViewSet):
@@ -20,3 +20,11 @@ class SemesterViewSet(viewsets.ModelViewSet):
 class SubjectTypeViewSet(viewsets.ModelViewSet):
     queryset = SubjectType.objects.all()
     serializer_class = SubjectTypeSerializer
+
+class SubjectViewSet(viewsets.ModelViewSet):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
+
+class QuestionPaperViewSet(viewsets.ModelViewSet):
+    queryset = QuestionPaper.objects.all()
+    serializer_class = QuestionPaperSerializer

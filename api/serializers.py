@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Branch, SemesterGroup, Semester, SubjectType
+from .models import Branch, QuestionPaper, SemesterGroup, Semester, Subject, SubjectType
 
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,4 +20,14 @@ class SemesterSerializer(serializers.ModelSerializer):
 class SubjectTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubjectType
+        fields = '__all__'
+
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = '__all__'
+
+class QuestionPaperSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionPaper
         fields = '__all__'
