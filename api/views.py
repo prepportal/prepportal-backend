@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 
 from .models import (Branch, Note, QuestionPaper, Semester, SemesterGroup,
                      Subject, SubjectType)
@@ -28,6 +29,23 @@ class SubjectViewSet(viewsets.ModelViewSet):
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        code = serializer.validated_data['code']
+        if Subject.objects.filter(code=code).first():
+            return Response({"detail": "Subject already exists."}, status=status.HTTP_400_BAD_REQUEST)
+
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def get_queryset(self):
+        if code := self.request.query_params.get('code'):
+            return Subject.objects.filter(code=code)
+        return Subject.objects.all()
+    
 class QuestionPaperViewSet(viewsets.ModelViewSet):
     queryset = QuestionPaper.objects.all()
     serializer_class = QuestionPaperSerializer
