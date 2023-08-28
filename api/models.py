@@ -52,8 +52,11 @@ class Subject(models.Model):
     
 class QuestionPaper(models.Model):
     question_paper_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    month = models.CharField(max_length=20)
     year = models.IntegerField()
-    file_url = models.CharField(max_length=255)
+    file_id = models.CharField(max_length=255)
+    file_size = models.IntegerField(max_length=20)
+    file_format = models.CharField(max_length=20)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
@@ -63,7 +66,9 @@ class QuestionPaper(models.Model):
 class Note(models.Model):
     note_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255)
-    file_url = models.CharField(max_length=255)
+    file_id = models.CharField(max_length=255)
+    file_size = models.IntegerField(max_length=20)
+    file_format = models.CharField(max_length=20)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
