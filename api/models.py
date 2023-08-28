@@ -52,6 +52,7 @@ class Subject(models.Model):
     
 class QuestionPaper(models.Model):
     question_paper_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255)
     month = models.CharField(max_length=20)
     year = models.IntegerField()
     file_id = models.CharField(max_length=255)
