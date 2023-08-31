@@ -7,12 +7,12 @@ from rest_framework import status
 
 
 class SubjectAPI(APIView):
-    def get(self, request, branch_id=None):
+    def get(self, request, semester_id=None):
         try:
-            if branch_id:
+            if semester_id:
                 if not (
                     subjects := Subject.objects.filter(
-                        semester__branch_id=branch_id
+                        semester_id=semester_id
                     )
                 ):
                     return CustomResponse(
