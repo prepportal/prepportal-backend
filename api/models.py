@@ -26,7 +26,7 @@ class Semester(models.Model):
     name = models.CharField(max_length=20)
     number = models.IntegerField()
     semester_group = models.ForeignKey(SemesterGroup, on_delete=models.CASCADE)
-    branch_id = models.ManyToManyField(Branch, related_name="semester")
+    branch = models.ManyToManyField(Branch, related_name="semester")
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
