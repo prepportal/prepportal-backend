@@ -7,5 +7,10 @@ urlpatterns = [
     path("semester-groups/", include("api.semester_group.semester_group_urls")),
     path("semesters/", include("api.semester.semester_urls")),
     path("subject-types/", include("api.subject_type.subject_type_urls")),
+    path("subjects/", include("api.subject.subject_urls")),
+    path("question-papers/", include("api.question_paper.question_paper_urls")),
+    path("notes/", include("api.note.note_urls")),
+
+
     path("__debug__/", include(debug_toolbar.urls)),
 ]

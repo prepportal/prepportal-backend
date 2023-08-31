@@ -26,7 +26,7 @@ class Semester(models.Model):
     name = models.CharField(max_length=20)
     number = models.IntegerField()
     semester_group = models.ForeignKey(SemesterGroup, on_delete=models.CASCADE)
-    branch_id = models.ManyToManyField(Branch, related_name="semester")
+    branch = models.ManyToManyField(Branch, related_name="semester")
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -59,6 +59,7 @@ class QuestionPaper(models.Model):
     file_id = models.CharField(max_length=255)
     file_size = models.IntegerField()
     file_format = models.CharField(max_length=20)
+    thumb = models.URLField()
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
@@ -71,6 +72,7 @@ class Note(models.Model):
     file_id = models.CharField(max_length=255)
     file_size = models.IntegerField()
     file_format = models.CharField(max_length=20)
+    thumb = models.URLField()
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
