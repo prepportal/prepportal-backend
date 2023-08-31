@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 
-# Create your models here.
+
 class Branch(models.Model):
     branch_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
@@ -26,6 +26,7 @@ class Semester(models.Model):
     name = models.CharField(max_length=20)
     number = models.IntegerField()
     semester_group = models.ForeignKey(SemesterGroup, on_delete=models.CASCADE)
+    branch_id = models.ManyToManyField(Branch, related_name="semester")
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
