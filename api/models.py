@@ -59,6 +59,7 @@ class QuestionPaper(models.Model):
     file_id = models.CharField(max_length=255)
     file_size = models.IntegerField()
     file_format = models.CharField(max_length=20)
+    thumb = models.URLField()
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
@@ -71,6 +72,7 @@ class Note(models.Model):
     file_id = models.CharField(max_length=255)
     file_size = models.IntegerField()
     file_format = models.CharField(max_length=20)
+    thumb = models.URLField()
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 
