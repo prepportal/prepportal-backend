@@ -12,6 +12,10 @@ class Branch(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        db_table = 'branch'
+        managed = False
+
 class SemesterGroup(models.Model):
     semester_group_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20)
@@ -21,6 +25,10 @@ class SemesterGroup(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        db_table = 'semestergroup'
+        managed = False
+
 class Semester(models.Model):
     semester_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20)
@@ -31,6 +39,10 @@ class Semester(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        db_table = 'semester'
+        managed = False
 
 class SubjectType(models.Model):
     subject_type_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -39,6 +51,10 @@ class SubjectType(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        db_table = 'subjecttype'
+        managed = False
 
 class Subject(models.Model):
     subject_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -51,6 +67,10 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
     
+    class Meta:
+        db_table = 'subject'
+        managed = False
+
 class QuestionPaper(models.Model):
     question_paper_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
@@ -65,6 +85,10 @@ class QuestionPaper(models.Model):
 
     def __str__(self):
         return f"Question Paper for {self.subject} - Year {self.year}"
+    
+    class Meta:
+        db_table = 'questionpaper'
+        managed = False
 
 class Note(models.Model):
     note_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -78,3 +102,7 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        db_table = 'note'
+        managed = False
