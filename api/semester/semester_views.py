@@ -9,9 +9,7 @@ class SemesterAPI(APIView):
     def get(self, request, semester_id=None):
         try:
             if semester_id:
-                semesters = Semester.objects.filter(
-                    semester_id=semester_id
-                )
+                semesters = Semester.objects.filter(semester_id=semester_id)
                 if not semesters:
                     return CustomResponse(
                         general_message="Semester Does Not Exists"

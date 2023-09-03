@@ -10,11 +10,7 @@ class SubjectAPI(APIView):
     def get(self, request, semester_id=None):
         try:
             if semester_id:
-                if not (
-                    subjects := Subject.objects.filter(
-                        semester_id=semester_id
-                    )
-                ):
+                if not (subjects := Subject.objects.filter(semester_id=semester_id)):
                     return CustomResponse(
                         general_message="Subject Does Not Exists"
                     ).get_failure_response(
@@ -26,9 +22,14 @@ class SubjectAPI(APIView):
             else:
                 subjects = Subject.objects.all()
                 paginated_queryset = get_paginated_queryset(
-                subjects, request, ["name"], {"name": "name"}
+                    subjects, request, ["name"], {"name": "name"}
                 )
-                serializer = SubjectSerializer(paginated_queryset.get("queryset"), many=True)
-                return CustomResponse().paginated_response(data=serializer.data, pagination=paginated_queryset.get("pagination"))
+                serializer = SubjectSerializer(
+                    paginated_queryset.get("queryset"), many=True
+                )
+                return CustomResponse().paginated_response(
+                    data=serializer.data,
+                    pagination=paginated_queryset.get("pagination"),
+                )
         except Exception as e:
             return CustomResponse(general_message=str(e)).get_failure_response()

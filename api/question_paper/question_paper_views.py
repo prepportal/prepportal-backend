@@ -26,9 +26,17 @@ class QuestionPaperAPI(APIView):
             else:
                 question_papers = QuestionPaper.objects.all()
                 paginated_queryset = get_paginated_queryset(
-                question_papers, request, ["name"], {"name": "name"}
+                    question_papers, request, ["name"], {"name": "name"}
                 )
-                serializer = QuestionPaperSerializer(paginated_queryset.get("queryset"), many=True)
-                return CustomResponse().paginated_response(data=serializer.data, pagination=paginated_queryset.get("pagination"))
+                serializer = QuestionPaperSerializer(
+                    paginated_queryset.get("queryset"), many=True
+                )
+                return CustomResponse().paginated_response(
+                    data=serializer.data,
+                    pagination=paginated_queryset.get("pagination"),
+                )
         except Exception as e:
             return CustomResponse(general_message=str(e)).get_failure_response()
+
+    def post(self, request):
+        pass
