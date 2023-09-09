@@ -14,8 +14,7 @@ class CustomResponse:
 
     def __init__(
         self,
-        message: Dict[str, Any] = None,
-        general_message: List[str] = None,
+        message: List[str] = None,
         response: Dict[str, Any] = None,
     ) -> None:
         """Initializes the CustomResponse object.
@@ -28,14 +27,9 @@ class CustomResponse:
             response (Dict[str, Any], optional): A dictionary of response data.
                 Defaults to {}.
         """
-        self.message = {} if message is None else message
-        self.general_message = [] if general_message is None else general_message
+        self.message = [] if message is None else [i for i in message]
         self.response = {} if response is None else response
 
-        if not isinstance(self.general_message, list):
-            self.general_message = [self.general_message]
-
-        self.message = {"general": self.general_message} | self.message
         
 
     def get_success_response(self) -> Response:

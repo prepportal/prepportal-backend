@@ -36,7 +36,7 @@ class QuestionPaperAPI(APIView):
                     pagination=paginated_queryset.get("pagination"),
                 )
         except Exception as e:
-            return CustomResponse(general_message=str(e)).get_failure_response()
+            return CustomResponse(message=e.messages).get_failure_response()
 
     def post(self, request):
         pass

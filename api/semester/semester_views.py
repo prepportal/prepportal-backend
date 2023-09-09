@@ -22,4 +22,4 @@ class SemesterAPI(APIView):
             serializer = SemsterSerializer(semesters, many=True)
             return CustomResponse(response=serializer.data).get_success_response()
         except Exception as e:
-            return CustomResponse(general_message=str(e)).get_failure_response()
+            return CustomResponse(message=e.messages).get_failure_response()
