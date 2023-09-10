@@ -31,7 +31,7 @@ class SemesterGroup(models.Model):
 class Semester(models.Model):
     semester_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20)
-    number = models.IntegerField()
+    code = models.CharField(max_length=6)
     semester_group = models.ForeignKey(SemesterGroup, on_delete=models.CASCADE)
     branch = models.ManyToManyField(Branch, related_name="semester")
     description = models.TextField(null=True, blank=True)
