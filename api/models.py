@@ -7,6 +7,7 @@ class Branch(models.Model):
     branch_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=10)
+    bg_url = models.URLField()
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
