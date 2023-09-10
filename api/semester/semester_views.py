@@ -6,10 +6,10 @@ from rest_framework import status
 
 
 class SemesterAPI(APIView):
-    def get(self, request, semester_id=None):
+    def get(self, request, branch_id=None):
         try:
-            if semester_id:
-                semesters = Semester.objects.filter(semester_id=semester_id)
+            if branch_id:
+                semesters = Semester.objects.filter(branch=branch_id)
                 if not semesters:
                     return CustomResponse(
                         general_message="Semester Does Not Exists"
