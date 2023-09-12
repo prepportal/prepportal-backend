@@ -43,6 +43,8 @@ class Subject(models.Model):
     subject_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=20)
+    branch_code = models.CharField(max_length=6)
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     semester_code = models.CharField(max_length=6)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     subject_type = models.ForeignKey(SubjectType, on_delete=models.CASCADE)
