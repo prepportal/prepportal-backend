@@ -9,7 +9,7 @@ class SemesterAPI(APIView):
     def get(self, request, branch_id=None):
         try:
             if branch_id:
-                semesters = Semester.objects.filter(branch=branch_id)
+                semesters = Semester.objects.filter(branch=branch_id).order_by('code')
                 if not semesters:
                     return CustomResponse(
                         message="Semester Does Not Exists"
