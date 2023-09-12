@@ -18,7 +18,7 @@ class SemesterAPI(APIView):
                         http_status_code=status.HTTP_404_NOT_FOUND,
                     )
             else:
-                semesters = Semester.objects.all()
+                semesters = Semester.objects.all().order_by('code')
             serializer = SemsterSerializer(semesters, many=True)
             return CustomResponse(response=serializer.data).get_success_response()
         except Exception as e:
