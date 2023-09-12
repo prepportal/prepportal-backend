@@ -9,7 +9,7 @@ class BranchAPI(APIView):
     def get(self, request, branch_id=None):
         try:
             if branch_id:
-                branches = Branch.objects.filter(branch_id=branch_id)
+                branches = Branch.objects.filter(id=branch_id)
                 if not branches:
                     return CustomResponse(
                         message="Branch Does Not Exists"

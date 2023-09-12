@@ -10,7 +10,7 @@ class NoteAPI(APIView):
     def get(self, request, subject_id=None):
         try:
             if subject_id:
-                if not (notes := Note.objects.filter(subject_id=subject_id)):
+                if not (notes := Note.objects.filter(id=subject_id)):
                     return CustomResponse(
                         message="Question Paper Does Not Exists"
                     ).get_failure_response(

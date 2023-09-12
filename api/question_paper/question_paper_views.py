@@ -12,7 +12,7 @@ class QuestionPaperAPI(APIView):
             if subject_id:
                 if not (
                     question_papers := QuestionPaper.objects.filter(
-                        subject_id=subject_id
+                        id=subject_id
                     )
                 ):
                     return CustomResponse(

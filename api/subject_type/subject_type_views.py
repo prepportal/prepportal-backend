@@ -10,7 +10,7 @@ class SubjectTypeAPI(APIView):
         try:
             if subject_type_id:
                 subject_types = SubjectType.objects.filter(
-                    subject_type_id=subject_type_id
+                    id=subject_type_id
                 )
                 if not subject_types:
                     return CustomResponse(
