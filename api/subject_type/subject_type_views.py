@@ -14,7 +14,7 @@ class SubjectTypeAPI(APIView):
                 )
                 if not subject_types:
                     return CustomResponse(
-                        general_message="Semester Type Does Not Exists"
+                        message="Semester Type Does Not Exists"
                     ).get_failure_response(
                         status_code=status.HTTP_404_NOT_FOUND,
                         http_status_code=status.HTTP_404_NOT_FOUND,
@@ -24,4 +24,4 @@ class SubjectTypeAPI(APIView):
             serializer = SubjectTypeSerializer(subject_types, many=True)
             return CustomResponse(response=serializer.data).get_success_response()
         except Exception as e:
-            return CustomResponse(message=e.messages).get_failure_response()
+            return CustomResponse(message=str(e)).get_failure_response()

@@ -12,7 +12,7 @@ class NoteAPI(APIView):
             if subject_id:
                 if not (notes := Note.objects.filter(subject_id=subject_id)):
                     return CustomResponse(
-                        general_message="Question Paper Does Not Exists"
+                        message="Question Paper Does Not Exists"
                     ).get_failure_response(
                         status_code=status.HTTP_404_NOT_FOUND,
                         http_status_code=status.HTTP_404_NOT_FOUND,
@@ -32,4 +32,4 @@ class NoteAPI(APIView):
                     pagination=paginated_queryset.get("pagination"),
                 )
         except Exception as e:
-            return CustomResponse(message=e.messages).get_failure_response()
+            return CustomResponse(message=str(e)).get_failure_response()

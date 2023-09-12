@@ -14,7 +14,7 @@ class SemesterGroupAPI(APIView):
                 )
                 if not groups:
                     return CustomResponse(
-                        general_message="Semester Group Does Not Exists"
+                        message="Semester Group Does Not Exists"
                     ).get_failure_response(
                         status_code=status.HTTP_404_NOT_FOUND,
                         http_status_code=status.HTTP_404_NOT_FOUND,
@@ -24,4 +24,4 @@ class SemesterGroupAPI(APIView):
             serializer = SemsterGroupSerializer(groups, many=True)
             return CustomResponse(response=serializer.data).get_success_response()
         except Exception as e:
-            return CustomResponse(message=e.messages).get_failure_response()
+            return CustomResponse(message=str(e)).get_failure_response()

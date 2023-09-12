@@ -12,7 +12,7 @@ class SubjectAPI(APIView):
             if semester_id:
                 if not (subjects := Subject.objects.filter(semester_id=semester_id)):
                     return CustomResponse(
-                        general_message="Subject Does Not Exists"
+                        message="Subject Does Not Exists"
                     ).get_failure_response(
                         status_code=status.HTTP_404_NOT_FOUND,
                         http_status_code=status.HTTP_404_NOT_FOUND,
@@ -32,4 +32,4 @@ class SubjectAPI(APIView):
                     pagination=paginated_queryset.get("pagination"),
                 )
         except Exception as e:
-            return CustomResponse(message=e.messages).get_failure_response()
+            return CustomResponse(message=str(e)).get_failure_response()
