@@ -15,6 +15,8 @@ class Branch(models.Model):
     
     class Meta:
         db_table = 'branch'
+        verbose_name = 'branch'
+        verbose_name_plural = 'branches'
 
 class Semester(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
