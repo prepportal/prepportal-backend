@@ -10,7 +10,7 @@ class SubjectAPI(APIView):
     def get(self, request, semester_id=None):
         try:
             if semester_id:
-                if not (subjects := Subject.objects.filter(id=semester_id)):
+                if not (subjects := Subject.objects.filter(semester_id=semester_id)):
                     return CustomResponse(
                         message="Subject Does Not Exists"
                     ).get_failure_response(

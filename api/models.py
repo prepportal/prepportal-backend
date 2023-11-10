@@ -42,7 +42,7 @@ class SubjectType(models.Model):
         db_table = 'subjecttype'
 
 class Subject(models.Model):
-    subject_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=20)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
