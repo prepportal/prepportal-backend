@@ -65,6 +65,7 @@ class QuestionPaper(models.Model):
     file_size = models.IntegerField()
     file_format = models.CharField(max_length=20)
     thumb = models.URLField()
+    issupply = models.BooleanField()
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
 

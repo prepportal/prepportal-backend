@@ -163,3 +163,4 @@ cython_debug/
 migrations/*.py
 */migrations/*.py
 */*/migrations/*.py
+alldata.json
