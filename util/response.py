@@ -86,14 +86,13 @@ class CustomResponse:
             Response: The generated paginated response.
 
         """
-
-        self.response.update({"data": data, "pagination": pagination})
         return Response(
             data={
                 "hasError": False,
                 "statusCode": status.HTTP_200_OK,
                 "message": self.message,
-                "response": self.response,
+                "response": data,
+                "pagination": pagination
             },
             status=status.HTTP_200_OK,
         )
