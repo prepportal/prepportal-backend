@@ -3,4 +3,5 @@ psycopg2-binary
 python-dotenv
 django-cors-headers
 django-debug-toolbar
+django-rest-registration
 gunicorn
